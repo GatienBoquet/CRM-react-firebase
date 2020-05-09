@@ -1,20 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
-import app from 'firebase/app';
-import data from '../data.json';
 import Grid from './Grid';
 import Form from './Form';
-import Config from './FireBase_config';
+import firebase from '../FireBase';
 
 class App extends Component{
   constructor(props){
     super(props);
-    this.state = { data };
+    this.state = { 
+      contacts: []
+     };
+  }
+
+  updateData(){
+    const db = firebase.firestore();
+
+
+    db.collection('contacts').get()
+    .then((snapshot) =>{
+        let contacts = [];
+        snapshot.forEach((doc) =>{
+          let contact = Object.assign({id: doc.id}, doc.data());
+          contacts.push(contact);
+        });
+        this.setState({
+          contacts: contacts
+        });
+    })
+    .catch((err) =>{
+      console.log("Erreur !", err);
+    })
+  }
+
+  deleteData(docID){
+    const db = firebase.firestore();
+
+    db.collection('contacts').doc(docID).delete();
+    this.updateData();
+
   }
 
   componentWillMount(){
-    app.initializeApp(Config)
-
+    this.updateData();
   }
 
   render() {
@@ -30,8 +57,8 @@ class App extends Component{
         </div>
       </div>
       <div>
-        <Form />
-        <Grid items={this.state.data}/>
+        <Form updateData={this.updateData.bind(this)} />
+        <Grid items={this.state.contacts} deleteData={this.deleteData.bind(this)} />
       </div>
     </div>
     )

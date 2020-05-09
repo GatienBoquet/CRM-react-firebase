@@ -3,9 +3,14 @@ import Single from './Single';
 
 
 class Grid extends Component{
+    deleteData(DocID)
+    {
+        this.props.deleteData(DocID);
+    }
+
     renderList(){
         return this.props.items.map((item, i) =>(
-            <Single key={i + 1} item={item} />
+            <Single key={i + 1} item={item} deleteData={this.deleteData.bind(this)}/>
         ));
     } 
 

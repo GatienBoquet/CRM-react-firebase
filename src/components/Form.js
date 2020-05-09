@@ -1,10 +1,35 @@
 import React , {Component} from 'react';
+import firebase from "../FireBase";
 
 class Form extends Component{
+    updateData(){
+        this.props.updateData();
+    }
+
+    addContact = (e) =>{
+        e.preventDefault();
+
+        let newContact = {
+            prenom: e.target.prenom.value,
+            nom: e.target.nom.value,
+            email: e.target.email.value,
+            compagnie: e.target.compagnie.value,
+            notes: e.target.notes.value,
+        }
+
+        const db = firebase.firestore();
+
+
+        db.collection('contacts').add(newContact);
+
+        document.getElementById("addContact").reset();
+        this.updateData();
+    }
+
     render(){
         return(
             <div className="row">
-                <form className="col s12" id="addContact">
+                <form className="col s12" id="addContact" onSubmit={this.addContact.bind(this)}>
                 <div className="row">
                     <div className="input-field col s6">
                         <input id="prenom" type="text" className="validate"/>

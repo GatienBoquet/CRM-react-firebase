@@ -8,9 +8,15 @@ class Grid extends Component{
         this.props.deleteData(DocID);
     }
 
+    modifyData(DocID, data)
+    {
+        console.log("Grid.js - Tentative d'update avec : " + data);
+        this.props.modifyData(DocID, data);
+    }
+
     renderList(){
         return this.props.items.map((item, i) =>(
-            <Single key={i + 1} item={item} deleteData={this.deleteData.bind(this)}/>
+            <Single key={i + 1} item={item} deleteData={this.deleteData.bind(this)} modifyData={this.modifyData.bind(this)} />
         ));
     } 
 

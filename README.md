@@ -1,5 +1,5 @@
 ![logo](https://www.skcript.com/svrmedia/heroes/firebase-react-native.png)
-<h1 align="center">Bienvenue sur repo crm-react-firebase 👋</h1>
+<h1 align="center">Bienvenue sur le repo crm-react-firebase 👋</h1>
 <p>
   
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
@@ -7,7 +7,7 @@
 
 
 
-> Un simple CRM avec React.JS et FireBase comme backend
+> Un simple CRM avec React.JS / Materialize et FireBase comme backend
 
 - [x] Affichage des items
 - [x] Ajout d'items

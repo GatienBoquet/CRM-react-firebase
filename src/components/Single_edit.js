@@ -32,14 +32,14 @@ class Single_edit extends Component{
             <div className="card-image">
             <img src="./portrait.jpg" alt={this.props.item.title}/>
             <input id="prenom" defaultValue={this.props.item.prenom} docid={this.props.item.id} onKeyDown={this.updateData} />
-            <input defaultValue={this.props.item.nom}></input>
-            <input defaultValue={this.props.item.compagnie}></input>
+            <input id="nom" defaultValue={this.props.item.nom} docid={this.props.item.id} onKeyDown={this.updateData}></input>
+            <input id="compagnie" defaultValue={this.props.item.compagnie} docid={this.props.item.id} onKeyDown={this.updateData}></input>
           </div>
           <div className="card-content">
-              <input defaultValue={this.props.item.email}></input>
+              <input id="email" defaultValue={this.props.item.email} docid={this.props.item.id} onKeyDown={this.updateData}></input>
               <div className="row">
                   <div className="col l6 center">   
-                      <input defaultValue={this.props.item.notes}></input>
+                      <input id="notes" defaultValue={this.props.item.notes} docid={this.props.item.id} onKeyDown={this.updateData}></input>
                   </div>
               </div>
           </div>

@@ -18,7 +18,7 @@
 ## Install
 
 ```sh
-yara, n install  
+yarn install  
 ```
 
 Faire une collection avec le nom "contacts" sur FireBase avec les paramètres suivants :
